@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${display_name}",
+  "description": "${description}",
+  "authors": [
+    "${authors}"
+  ],
+  "license": "MIT",
+  "icon": "assets/figextra/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "ru.furrc.figextra.fabric.FigExtraFabric"
+    ],
+    "figura_api": [
+      "ru.furrc.figextra.FigExtraPlugin"
+    ],
+    "figura_event": [
+      "ru.furrc.figextra.pv.events.PlasmoVoiceEvent"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.20",
+    "figura": ">=${figura_version}",
+    "plasmovoice": ">=${pv_version}"
+  }
+}
