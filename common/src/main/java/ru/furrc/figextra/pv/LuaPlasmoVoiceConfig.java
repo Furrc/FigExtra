@@ -1,9 +1,9 @@
-package ru.furrc.figextra.pv.figura;
+package ru.furrc.figextra.pv;
 
 import org.figuramc.figura.lua.LuaNotNil;
 import org.figuramc.figura.lua.LuaWhitelist;
 
-import static ru.furrc.figextra.FigExtraPlugin.VOICE_ADDON;
+import static ru.furrc.figextra.pv.PlasmoVoiceAPI.VOICE_ADDON;
 
 @LuaWhitelist
 public class LuaPlasmoVoiceConfig {

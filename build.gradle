@@ -39,6 +39,10 @@ subprojects {
             name = "plasmo-repo"
             url = "https://repo.plo.su"
         }
+        maven {
+            name "KosmX's maven"
+            url 'https://maven.kosmx.dev/'
+        }
     }
 
     dependencies {

@@ -18,13 +18,12 @@
       "ru.furrc.figextra.FigExtraPlugin"
     ],
     "figura_event": [
-      "ru.furrc.figextra.pv.events.PlasmoVoiceEvent"
+      "ru.furrc.figextra.pv.PlasmoVoiceEvent"
     ]
   },
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.20",
-    "figura": ">=${figura_version}",
-    "plasmovoice": ">=${pv_version}"
+    "figura": ">=${figura_version}"
   }
 }

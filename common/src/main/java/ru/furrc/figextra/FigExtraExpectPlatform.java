@@ -11,4 +11,9 @@ public class FigExtraExpectPlatform {
         throw new AssertionError();
     }
 
+    @ExpectPlatform
+    public static boolean isModEnable(String modId) {
+        throw new AssertionError();
+    }
+
 }
