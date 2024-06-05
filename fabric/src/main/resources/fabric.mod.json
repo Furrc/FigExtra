@@ -7,6 +7,9 @@
   "authors": [
     "${authors}"
   ],
+  "mixins": [
+    "figextra-common.mixins.json"
+  ],
   "license": "MIT",
   "icon": "assets/figextra/icon.png",
   "environment": "client",
@@ -18,7 +21,7 @@
       "ru.furrc.figextra.FigExtraPlugin"
     ],
     "figura_event": [
-      "ru.furrc.figextra.pv.PlasmoVoiceEvent"
+      "ru.furrc.figextra.FigExtraEvents"
     ]
   },
   "depends": {

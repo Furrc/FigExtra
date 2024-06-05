@@ -4,6 +4,7 @@ import org.figuramc.figura.avatar.Avatar;
 import org.figuramc.figura.entries.FiguraAPI;
 import org.figuramc.figura.entries.annotations.FiguraAPIPlugin;
 import org.figuramc.figura.lua.LuaWhitelist;
+import org.figuramc.figura.lua.docs.LuaTypeDoc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,17 +23,22 @@ public class FigExtraPlugin implements FiguraAPI {
             FigExtraPlugin.class,
     };
 
-    public static final String PLUGIN_ID = "figextra";
+    public static final Class<?>[] FIGEXTRA_DOC_CLASSES = new Class[] {};
+
+    public static final String PLUGIN_ID = "assets/figextra/figextra";
     public static final Logger LOGGER = LoggerFactory.getLogger(PLUGIN_ID);
     private Avatar avatar;
 
     public FigExtraPlugin() {
         if (FigExtraExpectPlatform.isModEnable("plasmovoice")) {
             WHITELISTED_CLASSES.add(ru.furrc.figextra.pv.PlasmoVoiceAPI.class);
-            WHITELISTED_CLASSES.add(ru.furrc.figextra.pv.LuaPlasmoVoiceConfig.class);
-            WHITELISTED_CLASSES.add(ru.furrc.figextra.pv.LuaPlasmoVoiceConfig.LuaPlasmoVoiceConfigVoice.class);
+            API_GETTERS.put("plasmovoice", r -> new ru.furrc.figextra.pv.PlasmoVoiceAPI());
+        }
 
-            API_GETTERS.put("pv", r -> new ru.furrc.figextra.pv.PlasmoVoiceAPI(r.owner));
+        if (FigExtraExpectPlatform.isModEnable("emotecraft")) {
+            WHITELISTED_CLASSES.add(ru.furrc.figextra.emotes.EmotesAPI.class);
+            WHITELISTED_CLASSES.add(ru.furrc.figextra.emotes.EmotesAPI.EmoteInfo.class);
+            API_GETTERS.put("emotes", r -> new ru.furrc.figextra.emotes.EmotesAPI());
         }
     }
 
@@ -43,9 +49,8 @@ public class FigExtraPlugin implements FiguraAPI {
     public static void init() {
         if (FigExtraExpectPlatform.isModEnable("plasmovoice")) {
             su.plo.voice.api.client.PlasmoVoiceClient
-                    .getAddonsLoader().load(ru.furrc.figextra.pv.PlasmoVoiceAPI.VOICE_ADDON);
+                    .getAddonsLoader().load(ru.furrc.figextra.pv.PlasmoVoiceAddon.INSTANCE);
         }
-        // todo: add emotecraft
     }
 
     @Override
@@ -71,7 +76,13 @@ public class FigExtraPlugin implements FiguraAPI {
 
     @Override
     public Collection<Class<?>> getDocsClasses() {
-        return List.of();
+        List<Class<?>> classesToRegister = new ArrayList<>();
+        for (Class<?> aClass : FIGEXTRA_DOC_CLASSES) {
+            if (aClass.isAnnotationPresent(LuaTypeDoc.class)) {
+                classesToRegister.add(aClass);
+            }
+        }
+        return classesToRegister;
     }
 
 }
