@@ -25,7 +25,7 @@ public class FigExtraPlugin implements FiguraAPI {
 
     public static final Class<?>[] FIGEXTRA_DOC_CLASSES = new Class[] {};
 
-    public static final String PLUGIN_ID = "assets/figextra/figextra";
+    public static final String PLUGIN_ID = "figextra";
     public static final Logger LOGGER = LoggerFactory.getLogger(PLUGIN_ID);
     private Avatar avatar;
 
